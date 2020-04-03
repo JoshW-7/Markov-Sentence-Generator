@@ -28,11 +28,7 @@ class MarkovModel:
 		return message
 
 	def update_corpus(self, message):
-		"""
-		Updates the corpus with a new input message of any desired length
-		"""
-
-
+		# Updates the corpus with a new input message of any desired length
 		sentences = [sentence for sentence in message.split(".") if len(sentence) > 0]
 		for sentence in sentences:
 			words = [word for word in sentence.split(" ") if len(word) > 0]
