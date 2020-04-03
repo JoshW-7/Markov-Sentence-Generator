@@ -4,6 +4,10 @@
  **Usage:**
 
 ```
+
+from Markov import MarkovModel
+
+
 zen = ("Beautiful is better than ugly."
 		"Explicit is better than implicit."
 		"Simple is better than complex."
@@ -24,24 +28,27 @@ zen = ("Beautiful is better than ugly."
 		"If the implementation is easy to explain, it may be a good idea."
 		"Namespaces are one honking great idea -- let's do more of those!")
 
-model = MarkovModel()
-model.update_corpus(zen)
+monty = ("He's not the Messiah—he's a very naughty boy!"
+		 "Strange women lying in ponds, distributing swords, is no basis for a system of government!"
+		"There's nothing wrong with you that an expensive operation can't prolong."
+		"She's a witch! Burn her already!"
+		"Oh! Now we see the violence inherent in the system! Help, help, I'm being repressed!"
+		"It's just a flesh wound."
+		"Are you suggesting that coconuts migrate?"
+		"Your Mother was a Hamster, and your Father smelt of Elderberries!"
+		"Help, I'm being oppressed. Come and see the violence inherent in the system."
+		"We're an anarcho-syndicalist commune")
+
+model1 = MarkovModel()
+model1.update_corpus(zen)
+
+model2 = MarkovModel()
+model2.update_corpus(monty)
+
+model1.merge_corpus(model2.corpus)
 
 for i in range(10):
-	print(model.generate_sentence())
-```
-
-```
-Better than complex.
-Unless explicitly silenced.
-Never pass silently.
-If the implementation is easy to explain, it may be a good idea.
-There should be one-- and preferably only one --obvious way to do it.
-Often better than *right* now.
-Temptation to guess.
-It's a bad idea.
-Special cases aren't special enough to break the rules.
-The face of ambiguity, refuse the temptation to guess.
+	print(model1.generate_sentence())
 ```
 
 (Results are better the more you feed into it!)
